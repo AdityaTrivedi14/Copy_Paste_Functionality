@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Pase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Copy-Paste Functionality</h1>
+    
+    <div class="wrapper">
+        <textarea name="" id="copy" cols="50" rows="3" placeholder="Enter text you want to copy"></textarea>
+        <span id="copied">COPIED</span>
+        <button id="btn"><i class="far fa-copy"></i></button>
+        <br>
+        <textarea name="" id="paste" cols="60" rows="5" placeholder="Enter text you want to paste"></textarea>
+    </div>
+
+    <script>
+        const copied = document.querySelector('#copied');
+        const paste  = document.querySelector('#paste');
+        const copy   = document.querySelector('#copy');
+        const btn    = document.querySelector('#btn');
+
+        copy.select();
+        paste.value = "";
+        btn.addEventListener('click',()=>{
+            if(document.execCommand('copy')){
+                paste.focus();
+                copied.style.opacity = '1';
+                setTimeout(()=>{
+                    copied.style.opacity = '0';
+                },800);
+            }
+            else
+                alert('Invalid Operation');
+        });
+    </script>
+
+</body>
+</html>
